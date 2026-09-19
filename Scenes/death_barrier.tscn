@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cj438po8rivr7"]
+
+[ext_resource type="Script" uid="uid://bah56bjc3jato" path="res://Scripts/death_barrier.gd" id="1_ss777"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pi6nn"]
+size = Vector2(1126, 516)
+
+[node name="DeathBarrier" type="Area2D" unique_id=1301939694]
+scale = Vector2(1, 0.44000018)
+script = ExtResource("1_ss777")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1612252655]
+shape = SubResource("RectangleShape2D_pi6nn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

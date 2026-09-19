@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bm1wyidq40kgi"]
+
+[ext_resource type="Script" uid="uid://dvnhplfggpwyv" path="res://Scripts/player.gd" id="1_cvnsp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pi6nn"]
+size = Vector2(56, 56)
+
+[node name="Player" type="CharacterBody2D" unique_id=1140827582]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_cvnsp")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=461742509]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.000004
+offset_top = -28.000002
+offset_right = 11.999996
+offset_bottom = 11.999998
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.4000002, 1.4000002)
+color = Color(0.32879883, 0.4446555, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=894563353]
+shape = SubResource("RectangleShape2D_pi6nn")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1748791378]
+offset = Vector2(0, -50)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="DashTimer" type="Timer" parent="." unique_id=995559847]
+wait_time = 0.3
+one_shot = true
+
+[node name="DashCooldownTimer" type="Timer" parent="." unique_id=473649982]
+wait_time = 3.0
+one_shot = true
+
+[node name="DashText" type="Label" parent="." unique_id=1050604755]
+offset_left = -51.999992
+offset_top = -62.0
+offset_right = 52.666664
+offset_bottom = -37.333336
+theme_override_font_sizes/font_size = 12
+text = "Dash Cooldown"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]

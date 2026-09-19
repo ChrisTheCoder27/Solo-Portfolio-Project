@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bya60381fwm3q"]
+
+[ext_resource type="Script" uid="uid://bjr38pxah7gjn" path="res://Scripts/start_menu.gd" id="1_juhg0"]
+
+[node name="StartMenu" type="Control" unique_id=1650990091]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_juhg0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2045132911]
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 648.0
+color = Color(0.38420412, 0.44219908, 1, 1)
+
+[node name="Title" type="Label" parent="." unique_id=1372147813]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 64.0
+offset_right = 839.0
+offset_bottom = 218.0
+theme_override_font_sizes/font_size = 56
+text = "Placeholder Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="." unique_id=2126436184]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 292.0
+offset_right = 729.0
+offset_bottom = 389.0
+theme_override_font_sizes/font_size = 35
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="." unique_id=1934956170]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 441.0
+offset_right = 696.0
+offset_bottom = 530.0
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

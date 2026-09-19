@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://bkxyqiak5gnoo"]
+
+[ext_resource type="PackedScene" uid="uid://bm1wyidq40kgi" path="res://Scenes/player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://caxi2jc7ryorh" path="res://Scenes/ground_platform.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://cj438po8rivr7" path="res://Scenes/death_barrier.tscn" id="3_8gbba"]
+
+[node name="Main" type="Node" unique_id=79320717]
+
+[node name="Player" parent="." unique_id=1140827582 instance=ExtResource("1_jjgbg")]
+position = Vector2(571, 402)
+speed = 350.0
+jump_velocity = -500.0
+dash_velocity = 1200.0
+cooldown_time = 2.0
+
+[node name="Platforms" type="Node" parent="." unique_id=565127686]
+
+[node name="GroundPlatform" parent="Platforms" unique_id=1231576220 instance=ExtResource("2_bo1nx")]
+position = Vector2(1096, 562)
+scale = Vector2(13.2, 3.000001)
+
+[node name="GroundPlatform2" parent="Platforms" unique_id=683494444 instance=ExtResource("2_bo1nx")]
+position = Vector2(3124.9998, 562)
+scale = Vector2(11.24, 3.000001)
+
+[node name="GroundPlatform3" parent="Platforms" unique_id=902889332 instance=ExtResource("2_bo1nx")]
+position = Vector2(1611, 467.00003)
+scale = Vector2(0.8799951, 3.000001)
+
+[node name="GroundPlatform4" parent="Platforms" unique_id=1784813094 instance=ExtResource("2_bo1nx")]
+position = Vector2(2854, 467)
+scale = Vector2(0.8799951, 3.000001)
+
+[node name="GroundPlatform5" parent="Platforms" unique_id=262544222 instance=ExtResource("2_bo1nx")]
+position = Vector2(3488, 416)
+scale = Vector2(0.8799951, 4.760001)
+
+[node name="GroundPlatform6" parent="Platforms" unique_id=1618461603 instance=ExtResource("2_bo1nx")]
+position = Vector2(4372, 562)
+scale = Vector2(2.7199993, 3.000001)
+
+[node name="GroundPlatform7" parent="Platforms" unique_id=640133848 instance=ExtResource("2_bo1nx")]
+position = Vector2(5580, 562)
+scale = Vector2(5.879999, 3.000001)
+
+[node name="WorldUI" type="Control" parent="." unique_id=321696030]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MoveText" type="Label" parent="WorldUI" unique_id=1262864457]
+layout_mode = 0
+offset_left = 695.0
+offset_top = 208.0
+offset_right = 913.0
+offset_bottom = 298.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "AD or Arrow
+Keys to Move"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="JumpText" type="Label" parent="WorldUI" unique_id=316312856]
+layout_mode = 0
+offset_left = 1498.0
+offset_top = 182.0
+offset_right = 1746.0
+offset_bottom = 272.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Space or W to Jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="DashText" type="Label" parent="WorldUI" unique_id=1385866720]
+layout_mode = 0
+offset_left = 3054.0
+offset_top = 182.0
+offset_right = 3263.0
+offset_bottom = 272.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Shift to Dash"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="DeathBarriers" type="Node" parent="." unique_id=1282865792]
+
+[node name="DeathBarrier" parent="DeathBarriers" unique_id=1301939694 instance=ExtResource("3_8gbba")]
+position = Vector2(-381, 831)
+
+[node name="DeathBarrier2" parent="DeathBarriers" unique_id=1854672424 instance=ExtResource("3_8gbba")]
+position = Vector2(2200, 830.99994)
+scale = Vector2(0.44, 0.44000018)
+
+[node name="DeathBarrier3" parent="DeathBarriers" unique_id=202037513 instance=ExtResource("3_8gbba")]
+position = Vector2(4564, 825.99994)
+scale = Vector2(1.280005, 0.44000018)
