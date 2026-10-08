@@ -1,17 +1,24 @@
 extends CharacterBody2D
 
+# Movement variables
 @export var speed : float = 300.0
+var normal_speed : float
 @export var jump_velocity : float = -400.0
 @export var dash_velocity : float = 900.0
 @export var cooldown_time : float = 3.0
+@export var hover_speed : float = 150
+@export var hover_time : float = 4.0
 var dash_timer : float
 var is_dashing : bool = false
 var can_dash : bool = true
 var prev_direction : int = 1
+var is_hovering : bool = false
 
 func _ready() -> void:
+	normal_speed = speed
 	$DashCooldownTimer.wait_time = cooldown_time
 	$DashText.text = ""
+	$HoverBar.max_value = hover_time
 
 func _process(delta: float) -> void:
 	# If the player has dashed, the timer will decrease
@@ -19,6 +26,10 @@ func _process(delta: float) -> void:
 	if !can_dash:
 		dash_timer -= delta
 		$DashText.text = str(snapped(dash_timer, 0.1))
+	
+	if !is_hovering and hover_time < $HoverBar.max_value:
+		hover_time += delta
+		$HoverBar.value = hover_time
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -54,7 +65,18 @@ func _physics_process(delta: float) -> void:
 		$DashTimer.start()
 		$DashCooldownTimer.start()
 		dash_timer = cooldown_time
-
+	
+	# Handle hover
+	if Input.is_action_pressed("hover") and !is_on_floor() and hover_time > 0.0:
+		velocity.y = 0
+		speed = hover_speed
+		hover_time -= delta
+		$HoverBar.value = hover_time
+		is_hovering = true
+	if Input.is_action_just_released("hover"):
+		speed = normal_speed
+		is_hovering = false
+	
 	move_and_slide()
 
 func _on_dash_timer_timeout() -> void:
