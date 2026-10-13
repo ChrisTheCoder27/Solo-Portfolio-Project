@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bm1wyidq40kgi" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://caxi2jc7ryorh" path="res://Scenes/ground_platform.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://cj438po8rivr7" path="res://Scenes/death_barrier.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://cq3epjyo01sp7" path="res://Scenes/player_ui.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://l13f4jofr2co" path="res://Scenes/fuel_can.tscn" id="5_kry3j"]
 
 [node name="Main" type="Node" unique_id=79320717]
 
@@ -114,3 +116,10 @@ scale = Vector2(0.44, 0.44000018)
 [node name="DeathBarrier3" parent="DeathBarriers" unique_id=202037513 instance=ExtResource("3_8gbba")]
 position = Vector2(4564, 825.99994)
 scale = Vector2(1.280005, 0.44000018)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=817978418]
+
+[node name="PlayerUI" parent="CanvasLayer" unique_id=752570288 instance=ExtResource("4_jjvhh")]
+
+[node name="FuelCan" parent="." unique_id=1171700991 instance=ExtResource("5_kry3j")]
+position = Vector2(1080, 466)

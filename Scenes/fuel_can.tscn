@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://l13f4jofr2co"]
+
+[ext_resource type="Script" uid="uid://b8jm7yqsjcbjk" path="res://Scripts/fuel_can.gd" id="1_uhmbd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pi6nn"]
+size = Vector2(98, 113)
+
+[node name="FuelCan" type="Area2D" unique_id=1171700991]
+script = ExtResource("1_uhmbd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=723394243]
+position = Vector2(0, -18.5)
+shape = SubResource("RectangleShape2D_pi6nn")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=13159074]
+offset_left = -34.0
+offset_top = -50.0
+offset_right = 33.0
+offset_bottom = 31.0
+color = Color(0.5662572, 0.567448, 3.85046e-07, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

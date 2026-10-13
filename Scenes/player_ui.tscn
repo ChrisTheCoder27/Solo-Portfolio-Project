@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cq3epjyo01sp7"]
+
+[ext_resource type="Script" uid="uid://b17ygdgythmbs" path="res://Scripts/player_ui.gd" id="1_ohrjl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pi6nn"]
+bg_color = Color(0.25368226, 0.3624642, 0.15828466, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gj143"]
+bg_color = Color(0.23721614, 0.7374934, 1.92523e-07, 1)
+
+[node name="PlayerUI" type="Control" unique_id=752570288]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ohrjl")
+
+[node name="FuelText" type="Label" parent="." unique_id=795856018]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 9.0
+offset_right = 175.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 28
+text = "Total Fuel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FuelBar" type="ProgressBar" parent="." unique_id=309819331]
+layout_mode = 1
+offset_left = 14.0
+offset_top = 64.0
+offset_right = 187.0
+offset_bottom = 109.0
+theme_override_styles/background = SubResource("StyleBoxFlat_pi6nn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gj143")
+value = 70.0

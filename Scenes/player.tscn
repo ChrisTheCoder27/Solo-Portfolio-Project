@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://bm1wyidq40kgi"]
 
 [ext_resource type="Script" uid="uid://dvnhplfggpwyv" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://bkcnwwnxx7nhc" path="res://Sprites/Rocket_Man_Idle.png" id="2_cvnsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pi6nn"]
-size = Vector2(56, 56)
+size = Vector2(49.333336, 66.66667)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvnsp"]
 bg_color = Color(0.468777, 0.46877706, 0.468777, 1)
@@ -18,6 +19,7 @@ hover_time = 2.5
 metadata/_edit_group_ = true
 
 [node name="PlayerShape" type="ColorRect" parent="." unique_id=461742509]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -32,7 +34,12 @@ grow_vertical = 2
 scale = Vector2(1.4000002, 1.4000002)
 color = Color(0.32879883, 0.4446555, 1, 1)
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1296851483]
+scale = Vector2(4, 3.9999998)
+texture = ExtResource("2_cvnsp")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=894563353]
+position = Vector2(-1.333333, 0)
 shape = SubResource("RectangleShape2D_pi6nn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1748791378]
@@ -49,9 +56,9 @@ wait_time = 3.0
 one_shot = true
 
 [node name="DashText" type="Label" parent="." unique_id=1050604755]
-offset_left = -51.999992
+offset_left = -47.999996
 offset_top = -62.0
-offset_right = 52.666664
+offset_right = 56.66666
 offset_bottom = -37.333336
 theme_override_font_sizes/font_size = 12
 text = "Dash Cooldown"

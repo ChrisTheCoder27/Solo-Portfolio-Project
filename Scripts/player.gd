@@ -48,10 +48,13 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = direction * speed
 		
+		# Flips the player sprite depending on the direction they're facing
 		if direction >= 0:
 			prev_direction = 1
+			$Sprite2D.flip_h = false
 		else:
 			prev_direction = -1
+			$Sprite2D.flip_h = true
 	else:
 		if is_dashing:
 			velocity.x = prev_direction * dash_velocity
