@@ -1,5 +1,8 @@
 extends Area2D
 
-func _on_body_entered(body: Node2D) -> void:
+@onready var player_ui = $"../CanvasLayer/PlayerUI"
+
+func _on_fuel_can_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		print("Fuel pickup!")
+		player_ui.increase_fuel()
+		queue_free()

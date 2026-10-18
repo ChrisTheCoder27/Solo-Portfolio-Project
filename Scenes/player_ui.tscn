@@ -16,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ohrjl")
+drain_rate = 2.0
 
 [node name="FuelText" type="Label" parent="." unique_id=795856018]
 layout_mode = 1

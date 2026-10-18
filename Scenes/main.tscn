@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cj438po8rivr7" path="res://Scenes/death_barrier.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cq3epjyo01sp7" path="res://Scenes/player_ui.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://l13f4jofr2co" path="res://Scenes/fuel_can.tscn" id="5_kry3j"]
+[ext_resource type="Script" uid="uid://b8jm7yqsjcbjk" path="res://Scripts/fuel_can.gd" id="6_21xkr"]
 
 [node name="Main" type="Node" unique_id=79320717]
 
@@ -122,4 +123,7 @@ scale = Vector2(1.280005, 0.44000018)
 [node name="PlayerUI" parent="CanvasLayer" unique_id=752570288 instance=ExtResource("4_jjvhh")]
 
 [node name="FuelCan" parent="." unique_id=1171700991 instance=ExtResource("5_kry3j")]
-position = Vector2(1080, 466)
+position = Vector2(1613, 359)
+script = ExtResource("6_21xkr")
+
+[connection signal="body_entered" from="FuelCan" to="FuelCan" method="_on_fuel_can_body_entered"]
