@@ -13,6 +13,12 @@ offset_right = 1156.0
 offset_bottom = 648.0
 color = Color(0.38420412, 0.44219908, 1, 1)
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=796564029]
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 648.0
+stretch_mode = 5
+
 [node name="Title" type="Label" parent="." unique_id=1372147813]
 layout_mode = 0
 offset_left = 283.0
@@ -20,7 +26,7 @@ offset_top = 64.0
 offset_right = 839.0
 offset_bottom = 218.0
 theme_override_font_sizes/font_size = 56
-text = "Placeholder Title"
+text = "Jetpack Jimmy"
 horizontal_alignment = 1
 vertical_alignment = 1
 
