@@ -2,12 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b17ygdgythmbs" path="res://Scripts/player_ui.gd" id="1_ohrjl"]
 [ext_resource type="Texture2D" uid="uid://4mrb8h78lr36" path="res://Sprites/Health_Heart.png" id="2_dxtgh"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pi6nn"]
-bg_color = Color(0.25368226, 0.3624642, 0.15828466, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gj143"]
-bg_color = Color(0.23721614, 0.7374934, 1.92523e-07, 1)
+[ext_resource type="Texture2D" uid="uid://dk86idl82x5st" path="res://Sprites/Fuel_Tank.png" id="2_qipxh"]
 
 [node name="PlayerUI" type="Control" unique_id=752570288]
 layout_mode = 3
@@ -30,15 +25,18 @@ text = "Total Fuel"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FuelBar" type="ProgressBar" parent="." unique_id=309819331]
-layout_mode = 1
-offset_left = 14.0
-offset_top = 64.0
-offset_right = 187.0
-offset_bottom = 109.0
-theme_override_styles/background = SubResource("StyleBoxFlat_pi6nn")
-theme_override_styles/fill = SubResource("StyleBoxFlat_gj143")
-value = 70.0
+[node name="FuelBar" type="TextureProgressBar" parent="." unique_id=188183606]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 59.000004
+offset_right = 75.0
+offset_bottom = 75.0
+scale = Vector2(5, 5)
+value = 80.0
+fill_mode = 3
+texture_under = ExtResource("2_qipxh")
+texture_progress = ExtResource("2_qipxh")
+tint_under = Color(0.7477167, 0, 0.16305727, 1)
 
 [node name="HealthText" type="Label" parent="." unique_id=1501727718]
 layout_mode = 1
@@ -66,8 +64,7 @@ offset_right = -104.0
 offset_bottom = 75.0
 grow_horizontal = 0
 scale = Vector2(4.535, 4.535)
-max_value = 10.0
-value = 8.0
+value = 80.0
 fill_mode = 3
 texture_under = ExtResource("2_dxtgh")
 texture_progress = ExtResource("2_dxtgh")

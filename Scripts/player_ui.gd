@@ -7,7 +7,7 @@ var current_fuel : float
 @export var fuel_increase : float = 20.0
 
 # Health variables
-@export var max_health : float = 10.0
+@export var max_health : float = 100.0
 var current_health : float
 
 func _ready() -> void:
@@ -22,11 +22,13 @@ func _process(delta: float) -> void:
 		current_fuel -= delta * drain_rate
 	else:
 		print("Out of fuel!")
-	
-	if current_health <= 0:
-		get_tree().reload_current_scene.call_deferred()
 
 func increase_fuel() -> void:
 	current_fuel += fuel_increase
 	if current_fuel > max_fuel:
 		current_fuel = max_fuel
+
+func take_damage(damage) -> void:
+	current_health -= damage
+	if (current_health <= 0):
+		get_tree().reload_current_scene.call_deferred()

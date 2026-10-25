@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cq3epjyo01sp7" path="res://Scenes/player_ui.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://l13f4jofr2co" path="res://Scenes/fuel_can.tscn" id="5_kry3j"]
 [ext_resource type="Script" uid="uid://b8jm7yqsjcbjk" path="res://Scripts/fuel_can.gd" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://n740xrf7b2l3" path="res://Scenes/land_mine.tscn" id="7_344ge"]
+[ext_resource type="Script" uid="uid://cw8t5obqrtlhb" path="res://Scripts/land_mine.gd" id="8_ynf5e"]
 
 [node name="Main" type="Node" unique_id=79320717]
 
@@ -126,4 +128,10 @@ scale = Vector2(1.280005, 0.44000018)
 position = Vector2(1613, 359)
 script = ExtResource("6_21xkr")
 
+[node name="LandMine" parent="." unique_id=1649342125 instance=ExtResource("7_344ge")]
+position = Vector2(1079, 479)
+script = ExtResource("8_ynf5e")
+mine_power = 20.0
+
 [connection signal="body_entered" from="FuelCan" to="FuelCan" method="_on_fuel_can_body_entered"]
+[connection signal="body_entered" from="LandMine" to="LandMine" method="_on_land_mine_body_entered"]
