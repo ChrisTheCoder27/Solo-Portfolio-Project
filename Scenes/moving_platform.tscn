@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d0mgganj6x2ub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pi6nn"]
-size = Vector2(172, 49)
+size = Vector2(88, 24)
 
 [sub_resource type="Animation" id="Animation_myvba"]
 length = 0.001
@@ -20,7 +20,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_vvyo4"]
 resource_name = "move"
-length = 5.0
+length = 6.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -29,10 +29,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 2, 3, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(300, 0), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(200, 0), Vector2(200, 0), Vector2(0, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_anqd2"]
@@ -46,14 +46,14 @@ _data = {
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=2129695769]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=2079604601]
-position = Vector2(0, 1.5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_pi6nn")
 
 [node name="ColorRect" type="ColorRect" parent="AnimatableBody2D" unique_id=1604032479]
-offset_left = -85.0
-offset_top = -22.0
-offset_right = 85.0
-offset_bottom = 26.0
+offset_left = -43.0
+offset_top = -9.0
+offset_right = 43.0
+offset_bottom = 13.0
 color = Color(0.5877506, 0.58775055, 0.5877505, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D" unique_id=304288222]

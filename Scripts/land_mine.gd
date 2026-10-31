@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var player_ui = $"../CanvasLayer/PlayerUI"
+@onready var player_ui = $"../../CanvasLayer/PlayerUI"
 @export var mine_power = 10.0
 
 func _on_land_mine_body_entered(body: Node2D) -> void:

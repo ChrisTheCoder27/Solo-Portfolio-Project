@@ -61,4 +61,4 @@ hover={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
-environment/defaults/default_clear_color=Color(0.20759577, 0.27523404, 0.61515015, 1)
+environment/defaults/default_clear_color=Color(0.1859189, 0.3788918, 0.5348346, 1)

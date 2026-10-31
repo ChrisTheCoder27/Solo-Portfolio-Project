@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dvnhplfggpwyv" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://pb5q01dhf3h1" path="res://Sprites/Rocket_Man_Idle.png" id="2_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://bup6xys3pobku" path="res://Sprites/Rocket_Man_Walking.png" id="3_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://dpbi3141rn73a" path="res://Sprites/Rocket_Man_Walking.png" id="3_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://3vneqbfdign4" path="res://Sprites/Rocket_Man_Hover.png" id="4_vgqql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pi6nn"]
 size = Vector2(52, 70.66667)
@@ -19,6 +20,7 @@ script = ExtResource("1_cvnsp")
 hover_time = 2.5
 idle_sprite = ExtResource("2_cvnsp")
 walk_sprite = ExtResource("3_6t5aa")
+hover_sprite = ExtResource("4_vgqql")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=894563353]

@@ -17,6 +17,7 @@ var is_hovering : bool = false
 # Sprite variables
 @export var idle_sprite : Texture2D
 @export var walk_sprite : Texture2D
+@export var hover_sprite : Texture2D
 
 func _ready() -> void:
 	normal_speed = speed
@@ -82,6 +83,7 @@ func _physics_process(delta: float) -> void:
 		hover_time -= delta
 		$HoverBar.value = hover_time
 		is_hovering = true
+		$Sprite2D.texture = hover_sprite
 	else:
 		speed = normal_speed
 

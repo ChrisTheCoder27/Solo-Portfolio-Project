@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bm1wyidq40kgi" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://caxi2jc7ryorh" path="res://Scenes/ground_platform.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://cj438po8rivr7" path="res://Scenes/death_barrier.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://d0mgganj6x2ub" path="res://Scenes/moving_platform.tscn" id="3_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://cq3epjyo01sp7" path="res://Scenes/player_ui.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://l13f4jofr2co" path="res://Scenes/fuel_can.tscn" id="5_kry3j"]
 [ext_resource type="Script" uid="uid://b8jm7yqsjcbjk" path="res://Scripts/fuel_can.gd" id="6_21xkr"]
@@ -12,7 +13,7 @@
 [node name="Main" type="Node" unique_id=79320717]
 
 [node name="Player" parent="." unique_id=1140827582 instance=ExtResource("1_jjgbg")]
-position = Vector2(571, 402)
+position = Vector2(571, 483)
 speed = 350.0
 jump_velocity = -500.0
 dash_velocity = 1200.0
@@ -21,32 +22,40 @@ cooldown_time = 2.0
 [node name="Platforms" type="Node" parent="." unique_id=565127686]
 
 [node name="GroundPlatform" parent="Platforms" unique_id=1231576220 instance=ExtResource("2_bo1nx")]
-position = Vector2(1096, 562)
+position = Vector2(1089, 690)
 scale = Vector2(13.2, 3.000001)
 
 [node name="GroundPlatform2" parent="Platforms" unique_id=683494444 instance=ExtResource("2_bo1nx")]
-position = Vector2(3124.9998, 562)
-scale = Vector2(11.24, 3.000001)
+position = Vector2(2922, 641.00006)
+scale = Vector2(11.24, 4.160001)
 
-[node name="GroundPlatform3" parent="Platforms" unique_id=902889332 instance=ExtResource("2_bo1nx")]
-position = Vector2(1611, 467.00003)
-scale = Vector2(0.8799951, 3.000001)
+[node name="GroundPlatform3" parent="Platforms" unique_id=673529990 instance=ExtResource("2_bo1nx")]
+position = Vector2(2913, 467.99997)
+scale = Vector2(3.7599998, 2.7340536)
 
-[node name="GroundPlatform4" parent="Platforms" unique_id=1784813094 instance=ExtResource("2_bo1nx")]
-position = Vector2(2854, 467)
-scale = Vector2(0.8799951, 3.000001)
+[node name="GroundPlatform4" parent="Platforms" unique_id=1204918017 instance=ExtResource("2_bo1nx")]
+position = Vector2(4592, 761)
+scale = Vector2(11.240001, 4.160001)
 
-[node name="GroundPlatform5" parent="Platforms" unique_id=262544222 instance=ExtResource("2_bo1nx")]
-position = Vector2(3488, 416)
-scale = Vector2(0.8799951, 4.760001)
+[node name="GroundPlatform5" parent="Platforms" unique_id=2038546468 instance=ExtResource("2_bo1nx")]
+position = Vector2(5910.9995, 472)
+scale = Vector2(11.240001, 4.160001)
 
-[node name="GroundPlatform6" parent="Platforms" unique_id=1618461603 instance=ExtResource("2_bo1nx")]
-position = Vector2(4372, 562)
-scale = Vector2(2.7199993, 3.000001)
+[node name="GroundPlatform6" parent="Platforms" unique_id=38886012 instance=ExtResource("2_bo1nx")]
+position = Vector2(7888, 470)
+scale = Vector2(11.240001, 4.160001)
 
-[node name="GroundPlatform7" parent="Platforms" unique_id=640133848 instance=ExtResource("2_bo1nx")]
-position = Vector2(5580, 562)
-scale = Vector2(5.879999, 3.000001)
+[node name="GroundPlatform7" parent="Platforms" unique_id=893585560 instance=ExtResource("2_bo1nx")]
+position = Vector2(9041, 566.99994)
+scale = Vector2(5.6400204, 4.160001)
+
+[node name="GroundPlatform8" parent="Platforms" unique_id=768893107 instance=ExtResource("2_bo1nx")]
+position = Vector2(9690.001, 414.00003)
+scale = Vector2(7.1600204, 5.3600025)
+
+[node name="MovingPlatform" parent="Platforms" unique_id=1434239301 instance=ExtResource("3_ynf5e")]
+position = Vector2(4076, 390)
+scale = Vector2(3.7599998, 3.000001)
 
 [node name="WorldUI" type="Control" parent="." unique_id=321696030]
 layout_mode = 3
@@ -70,10 +79,10 @@ uppercase = true
 
 [node name="JumpText" type="Label" parent="WorldUI" unique_id=316312856]
 layout_mode = 0
-offset_left = 1498.0
-offset_top = 182.0
-offset_right = 1746.0
-offset_bottom = 272.0
+offset_left = 1709.0
+offset_top = 217.0
+offset_right = 1957.0
+offset_bottom = 307.0
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "Space or W to Jump"
@@ -81,12 +90,25 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="FuelText" type="Label" parent="WorldUI" unique_id=1311941628]
+layout_mode = 0
+offset_left = 5664.0
+offset_top = -59.0
+offset_right = 6068.0
+offset_bottom = 31.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Collect Cans to Recover Fuel"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [node name="DashText" type="Label" parent="WorldUI" unique_id=1385866720]
 layout_mode = 0
-offset_left = 3054.0
-offset_top = 182.0
-offset_right = 3263.0
-offset_bottom = 272.0
+offset_left = 8819.0
+offset_top = -29.0
+offset_right = 9054.0
+offset_bottom = 61.0
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "Shift or E to Dash"
@@ -95,11 +117,12 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="HoverText" type="Label" parent="WorldUI" unique_id=678381790]
+visible = false
 layout_mode = 0
-offset_left = 4696.0
-offset_top = 255.0
-offset_right = 5021.0
-offset_bottom = 345.0
+offset_left = 2737.0
+offset_top = -231.0
+offset_right = 3062.0
+offset_bottom = -141.0
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "Hold Left Click to Hover"
@@ -110,28 +133,43 @@ uppercase = true
 [node name="DeathBarriers" type="Node" parent="." unique_id=1282865792]
 
 [node name="DeathBarrier" parent="DeathBarriers" unique_id=1301939694 instance=ExtResource("3_8gbba")]
-position = Vector2(-381, 831)
+position = Vector2(-764.99994, 863.99994)
+scale = Vector2(1.5200009, 0.44000018)
 
 [node name="DeathBarrier2" parent="DeathBarriers" unique_id=1854672424 instance=ExtResource("3_8gbba")]
-position = Vector2(2200, 830.99994)
+position = Vector2(6916.9995, 703.99994)
 scale = Vector2(0.44, 0.44000018)
-
-[node name="DeathBarrier3" parent="DeathBarriers" unique_id=202037513 instance=ExtResource("3_8gbba")]
-position = Vector2(4564, 825.99994)
-scale = Vector2(1.280005, 0.44000018)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=817978418]
 
 [node name="PlayerUI" parent="CanvasLayer" unique_id=752570288 instance=ExtResource("4_jjvhh")]
+drain_rate = 1.5
+fuel_increase = 30.0
 
-[node name="FuelCan" parent="." unique_id=1171700991 instance=ExtResource("5_kry3j")]
-position = Vector2(1613, 359)
+[node name="Pickups" type="Node" parent="." unique_id=679058531]
+
+[node name="FuelCan" parent="Pickups" unique_id=1171700991 instance=ExtResource("5_kry3j")]
+position = Vector2(5866, 230)
 script = ExtResource("6_21xkr")
 
-[node name="LandMine" parent="." unique_id=1649342125 instance=ExtResource("7_344ge")]
-position = Vector2(1079, 479)
+[node name="Dangers" type="Node" parent="." unique_id=147584453]
+
+[node name="LandMine" parent="Dangers" unique_id=1649342125 instance=ExtResource("7_344ge")]
+position = Vector2(2910, 328)
 script = ExtResource("8_ynf5e")
 mine_power = 20.0
 
-[connection signal="body_entered" from="FuelCan" to="FuelCan" method="_on_fuel_can_body_entered"]
-[connection signal="body_entered" from="LandMine" to="LandMine" method="_on_land_mine_body_entered"]
+[node name="LandMine2" parent="Dangers" unique_id=433947266 instance=ExtResource("7_344ge")]
+position = Vector2(7528, 269)
+script = ExtResource("8_ynf5e")
+mine_power = 20.0
+
+[node name="LandMine3" parent="Dangers" unique_id=307675590 instance=ExtResource("7_344ge")]
+position = Vector2(8039, 268)
+script = ExtResource("8_ynf5e")
+mine_power = 20.0
+
+[connection signal="body_entered" from="Pickups/FuelCan" to="Pickups/FuelCan" method="_on_fuel_can_body_entered"]
+[connection signal="body_entered" from="Dangers/LandMine" to="Dangers/LandMine" method="_on_land_mine_body_entered"]
+[connection signal="body_entered" from="Dangers/LandMine2" to="Dangers/LandMine2" method="_on_land_mine_body_entered"]
+[connection signal="body_entered" from="Dangers/LandMine3" to="Dangers/LandMine3" method="_on_land_mine_body_entered"]
