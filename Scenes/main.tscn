@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://d0mgganj6x2ub" path="res://Scenes/moving_platform.tscn" id="3_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://cq3epjyo01sp7" path="res://Scenes/player_ui.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://l13f4jofr2co" path="res://Scenes/fuel_can.tscn" id="5_kry3j"]
-[ext_resource type="Script" uid="uid://b8jm7yqsjcbjk" path="res://Scripts/fuel_can.gd" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://n740xrf7b2l3" path="res://Scenes/land_mine.tscn" id="7_344ge"]
 [ext_resource type="Script" uid="uid://cw8t5obqrtlhb" path="res://Scripts/land_mine.gd" id="8_ynf5e"]
 
@@ -79,13 +78,14 @@ uppercase = true
 
 [node name="JumpText" type="Label" parent="WorldUI" unique_id=316312856]
 layout_mode = 0
-offset_left = 1709.0
-offset_top = 217.0
-offset_right = 1957.0
-offset_bottom = 307.0
+offset_left = 1717.0
+offset_top = 235.0
+offset_right = 2019.0
+offset_bottom = 325.0
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
-text = "Space or W to Jump"
+text = "Space or W / Up 
+Arrow to Jump"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -150,7 +150,6 @@ fuel_increase = 30.0
 
 [node name="FuelCan" parent="Pickups" unique_id=1171700991 instance=ExtResource("5_kry3j")]
 position = Vector2(5866, 230)
-script = ExtResource("6_21xkr")
 
 [node name="Dangers" type="Node" parent="." unique_id=147584453]
 
