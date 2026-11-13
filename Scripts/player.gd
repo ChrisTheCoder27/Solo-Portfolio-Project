@@ -14,11 +14,6 @@ var can_dash : bool = true
 var prev_direction : int = 1
 var is_hovering : bool = false
 
-# Sprite variables
-@export var idle_sprite : Texture2D
-@export var walk_sprite : Texture2D
-@export var hover_sprite : Texture2D
-
 func _ready() -> void:
 	normal_speed = speed
 	$DashCooldownTimer.wait_time = cooldown_time
@@ -53,21 +48,21 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * dash_velocity
 		else:
 			velocity.x = direction * speed
-			$Sprite2D.texture = walk_sprite
+			$AnimatedSprite2D.play("walk")
 		
 		# Flips the player sprite depending on the direction they're facing
 		if direction >= 0:
 			prev_direction = 1
-			$Sprite2D.flip_h = false
+			$AnimatedSprite2D.flip_h = false
 		else:
 			prev_direction = -1
-			$Sprite2D.flip_h = true
+			$AnimatedSprite2D.flip_h = true
 	else:
 		if is_dashing:
 			velocity.x = prev_direction * dash_velocity
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
-			$Sprite2D.texture = idle_sprite
+			$AnimatedSprite2D.play("idle")
 	
 	# Handle dash
 	if Input.is_action_just_pressed("dash") and can_dash:
@@ -84,7 +79,7 @@ func _physics_process(delta: float) -> void:
 		hover_time -= delta
 		$HoverBar.value = hover_time
 		is_hovering = true
-		$Sprite2D.texture = hover_sprite
+		$AnimatedSprite2D.play("hover")
 	else:
 		speed = normal_speed
 
@@ -93,6 +88,14 @@ func _physics_process(delta: float) -> void:
 		is_hovering = false
 	
 	move_and_slide()
+
+func fuel_empty() -> void:
+	$DashTimer.wait_time /= 2.0
+	$HoverBar.max_value /= 2.0
+
+func movement_restored() -> void:
+	$DashTimer.wait_time *= 2.0
+	$HoverBar.max_value *= 2.0
 
 func _on_dash_timer_timeout() -> void:
 	is_dashing = false

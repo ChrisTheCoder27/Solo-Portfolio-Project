@@ -5,9 +5,45 @@
 [ext_resource type="Texture2D" uid="uid://dpbi3141rn73a" path="res://Sprites/Rocket_Man_Walking.png" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://3vneqbfdign4" path="res://Sprites/Rocket_Man_Hover.png" id="4_vgqql"]
 [ext_resource type="AudioStream" uid="uid://lwrvcby7gw04" path="res://Audio/Jump.wav" id="5_fkybt"]
+[ext_resource type="Texture2D" uid="uid://c2cajogy8iae6" path="res://Sprites/Rocket_Man_Walking2.png" id="5_x3wgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pi6nn"]
 size = Vector2(52, 70.66667)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ir3v"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vgqql")
+}],
+"loop": 1,
+"name": &"hover",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cvnsp")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6t5aa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x3wgy")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 3.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvnsp"]
 bg_color = Color(0.468777, 0.46877706, 0.468777, 1)
@@ -19,18 +55,16 @@ bg_color = Color(0.85301226, 0.5049414, 0, 1)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_cvnsp")
 hover_time = 2.5
-idle_sprite = ExtResource("2_cvnsp")
-walk_sprite = ExtResource("3_6t5aa")
-hover_sprite = ExtResource("4_vgqql")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=894563353]
 position = Vector2(-1.333333, 0)
 shape = SubResource("RectangleShape2D_pi6nn")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1296851483]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=167159981]
 scale = Vector2(4.3333335, 4.3333335)
-texture = ExtResource("2_cvnsp")
+sprite_frames = SubResource("SpriteFrames_8ir3v")
+animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1748791378]
 offset = Vector2(0, -50)
