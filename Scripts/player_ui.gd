@@ -5,8 +5,8 @@ extends Control
 # Fuel variables
 @export var max_fuel : float = 100.0
 var current_fuel : float
-@export var drain_rate : float = 2.5
-@export var fuel_increase : float = 20.0
+@export var drain_rate : float
+@export var fuel_increase : float
 var fuel_empty : bool
 
 # Health variables
@@ -24,12 +24,15 @@ func _process(delta: float) -> void:
 	
 	if current_fuel > 0.0:
 		current_fuel -= delta * drain_rate
-		fuel_empty = true
+		if fuel_empty:
+			player.movement_restored()
+			fuel_empty = false
 	else:
+		# If fuel reaches 0, the player's dash and hover
+		# abilities are cut in half
 		if !fuel_empty:
-			#player.fuel_empty()
+			player.fuel_empty()
 			fuel_empty = true
-			get_tree().reload_current_scene.call_deferred()
 
 func increase_fuel() -> void:
 	current_fuel += fuel_increase

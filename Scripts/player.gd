@@ -13,6 +13,10 @@ var is_dashing : bool = false
 var can_dash : bool = true
 var prev_direction : int = 1
 var is_hovering : bool = false
+var is_depleted : bool = false
+
+# Sprite variables
+@onready var player_sprite = $AnimatedSprite2D
 
 func _ready() -> void:
 	normal_speed = speed
@@ -27,7 +31,7 @@ func _process(delta: float) -> void:
 		dash_timer -= delta
 		$DashText.text = str(snapped(dash_timer, 0.1))
 	
-	if !is_hovering and hover_time < $HoverBar.max_value:
+	if !is_hovering and !is_depleted and hover_time < $HoverBar.max_value:
 		hover_time += delta
 		$HoverBar.value = hover_time
 
@@ -48,21 +52,19 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * dash_velocity
 		else:
 			velocity.x = direction * speed
-			$AnimatedSprite2D.play("walk")
 		
 		# Flips the player sprite depending on the direction they're facing
 		if direction >= 0:
 			prev_direction = 1
-			$AnimatedSprite2D.flip_h = false
+			player_sprite.flip_h = false
 		else:
 			prev_direction = -1
-			$AnimatedSprite2D.flip_h = true
+			player_sprite.flip_h = true
 	else:
 		if is_dashing:
 			velocity.x = prev_direction * dash_velocity
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
-			$AnimatedSprite2D.play("idle")
 	
 	# Handle dash
 	if Input.is_action_just_pressed("dash") and can_dash:
@@ -79,19 +81,33 @@ func _physics_process(delta: float) -> void:
 		hover_time -= delta
 		$HoverBar.value = hover_time
 		is_hovering = true
-		$AnimatedSprite2D.play("hover")
-	else:
+	elif Input.is_action_pressed("hover") and hover_time <= 0.0:
 		speed = normal_speed
+		is_depleted = true
+		is_hovering = false
+		$HoverCooldownTimer.start()
 
-	if Input.is_action_just_released("hover"):
+	if Input.is_action_just_released("hover") and !is_depleted:
 		speed = normal_speed
 		is_hovering = false
+	
+	# Handle animations/sprites
+	if direction and is_on_floor():
+		player_sprite.play("walk")
+	elif !is_on_floor() and !is_hovering:
+		player_sprite.play("jump")
+	elif !is_on_floor() and is_hovering:
+		player_sprite.play("hover")
+	else:
+		player_sprite.play("idle")
 	
 	move_and_slide()
 
 func fuel_empty() -> void:
 	$DashTimer.wait_time /= 2.0
 	$HoverBar.max_value /= 2.0
+	if hover_time > $HoverBar.max_value:
+		hover_time = $HoverBar.max_value
 
 func movement_restored() -> void:
 	$DashTimer.wait_time *= 2.0
@@ -103,3 +119,6 @@ func _on_dash_timer_timeout() -> void:
 func _on_dash_cooldown_timer_timeout() -> void:
 	can_dash = true
 	$DashText.text = ""
+
+func _on_hover_cooldown_timer_timeout() -> void:
+	is_depleted = false

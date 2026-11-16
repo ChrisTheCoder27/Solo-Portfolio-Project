@@ -143,8 +143,6 @@ scale = Vector2(0.44, 0.44000018)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=817978418]
 
 [node name="PlayerUI" parent="CanvasLayer" unique_id=752570288 instance=ExtResource("4_jjvhh")]
-drain_rate = 1.5
-fuel_increase = 30.0
 
 [node name="Pickups" type="Node" parent="." unique_id=679058531]
 

@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dvnhplfggpwyv" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://pb5q01dhf3h1" path="res://Sprites/Rocket_Man_Idle.png" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://b5cjb0tkjxi7w" path="res://Sprites/Rocket_Man_Hover2.png" id="3_3smsa"]
 [ext_resource type="Texture2D" uid="uid://dpbi3141rn73a" path="res://Sprites/Rocket_Man_Walking.png" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://3vneqbfdign4" path="res://Sprites/Rocket_Man_Hover.png" id="4_vgqql"]
+[ext_resource type="Texture2D" uid="uid://cm7mcl2eq73py" path="res://Sprites/Rocket_Man_Jumping.png" id="5_8erm5"]
 [ext_resource type="AudioStream" uid="uid://lwrvcby7gw04" path="res://Audio/Jump.wav" id="5_fkybt"]
 [ext_resource type="Texture2D" uid="uid://c2cajogy8iae6" path="res://Sprites/Rocket_Man_Walking2.png" id="5_x3wgy"]
 
@@ -20,10 +22,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_vgqql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3smsa")
 }],
 "loop": 1,
 "name": &"hover",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -31,6 +36,14 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8erm5")
+}],
+"loop": 1,
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -71,14 +84,6 @@ offset = Vector2(0, -50)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="DashTimer" type="Timer" parent="." unique_id=995559847]
-wait_time = 0.3
-one_shot = true
-
-[node name="DashCooldownTimer" type="Timer" parent="." unique_id=473649982]
-wait_time = 3.0
-one_shot = true
-
 [node name="DashText" type="Label" parent="." unique_id=1050604755]
 offset_left = -47.999996
 offset_top = -62.0
@@ -88,6 +93,14 @@ theme_override_font_sizes/font_size = 12
 text = "Dash Cooldown"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DashTimer" type="Timer" parent="." unique_id=995559847]
+wait_time = 0.3
+one_shot = true
+
+[node name="DashCooldownTimer" type="Timer" parent="." unique_id=473649982]
+wait_time = 3.0
+one_shot = true
 
 [node name="HoverBar" type="ProgressBar" parent="." unique_id=34282602]
 offset_left = -49.33333
@@ -101,8 +114,13 @@ value = 4.0
 fill_mode = 3
 show_percentage = false
 
+[node name="HoverCooldownTimer" type="Timer" parent="." unique_id=1633319352]
+wait_time = 0.25
+one_shot = true
+
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=621385683]
 stream = ExtResource("5_fkybt")
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
+[connection signal="timeout" from="HoverCooldownTimer" to="." method="_on_hover_cooldown_timer_timeout"]
